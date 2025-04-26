@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueWise Pro - Book a Slot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5',
+                        secondary: '#10b981'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .slot {
+            transition: all 0.3s ease;
+        }
+        
+        .slot:hover {
+            transform: scale(1.05);
+        }
+        
+        .slot.available {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #065f46;
+        }
+        
+        .slot.booked {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #991b1b;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .slot.selected {
+            background-color: rgba(79, 70, 229, 0.15);
+            border: 2px solid #4f46e5;
+            color: #4f46e5;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            position: absolute;
+            left: 1rem;
+            top: 0.75rem;
+            color: #6b7280;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group textarea:not(:placeholder-shown) ~ label {
+            top: -0.5rem;
+            left: 0.75rem;
+            font-size: 0.75rem;
+            padding: 0 0.25rem;
+            background-color: white;
+            color: #4f46e5;
+        }
+        
+        .payment-method {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #4f46e5;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-sm">
+        <nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="./index.html" class="text-2xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="./booking.html" class="text-gray-600 hover:text-primary transition-colors">Booking</a>
+                    <a href="./queue.html" class="text-gray-600 hover:text-primary transition-colors">Queue</a>
+                    <a href="./features.html" class="text-gray-600 hover:text-primary transition-colors">Feature</a>
+                    <a href="./contact_us.html" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="./sign_in.html" class="text-gray-600 hover:text-primary transition-colors">Sign In</a>
+                    <a href="ready.html" data-readdy="true"
+                        class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get
+                        Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-6 py-8 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Book a Slot</h2>
+                <p class="mt-2 text-gray-600">Select an available time slot and complete your booking details</p>
+            </div>
+            <!-- Date Selection -->
+            <div class="px-6 py-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Select Date</h3>
+                <div class="flex space-x-4 overflow-x-auto pb-2">
+                    <button class="slot selected min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Today</div>
+                        <div class="text-sm">Apr 26</div>
+                    </button>
+                    <button class="slot available min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Tomorrow</div>
+                        <div class="text-sm">Apr 27</div>
+                    </button>
+                    <button class="slot available min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Monday</div>
+                        <div class="text-sm">Apr 28</div>
+                    </button>
+                    <button class="slot available min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Tuesday</div>
+                        <div class="text-sm">Apr 29</div>
+                    </button>
+                    <button class="slot available min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Wednesday</div>
+                        <div class="text-sm">Apr 30</div>
+                    </button>
+                    <button class="slot available min-w-[100px] px-4 py-3 !rounded-button whitespace-nowrap text-center">
+                        <div class="font-medium">Thursday</div>
+                        <div class="text-sm">May 1</div>
+                    </button>
+                </div>
+            </div>
+            <!-- Time Slot Selection -->
+            <div class="px-6 py-6 border-b border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Select Time Slot</h3>
+                    <div class="flex items-center space-x-2">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-100 border border-green-500 rounded-full mr-1"></div>
+                            <span class="text-xs text-gray-500">Available</span>
+                        </div>
+                        <div class="flex items-center ml-3">
+                            <div class="w-3 h-3 bg-red-100 border border-red-500 rounded-full mr-1"></div>
+                            <span class="text-xs text-gray-500">Booked</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                    <button class="slot booked px-3 py-2 !rounded-button text-center">
+                        9:00 AM
+                    </button>
+                    <button class="slot booked px-3 py-2 !rounded-button text-center">
+                        9:30 AM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        10:00 AM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        10:30 AM
+                    </button>
+                    <button class="slot selected px-3 py-2 !rounded-button text-center">
+                        11:00 AM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        11:30 AM
+                    </button>
+                    <button class="slot booked px-3 py-2 !rounded-button text-center">
+                        12:00 PM
+                    </button>
+                    <button class="slot booked px-3 py-2 !rounded-button text-center">
+                        12:30 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        1:00 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        1:30 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        2:00 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        2:30 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        3:00 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        3:30 PM
+                    </button>
+                    <button class="slot booked px-3 py-2 !rounded-button text-center">
+                        4:00 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        4:30 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        5:00 PM
+                    </button>
+                    <button class="slot available px-3 py-2 !rounded-button text-center">
+                        5:30 PM
+                    </button>
+                </div>
+            </div>
+
+            <!-- Selected Slot Summary -->
+            <div class="px-6 py-6 bg-gray-50 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900">Your Selected Slot</h3>
+                        <p class="text-gray-600 mt-1">Saturday, April 26, 2025 at 11:00 AM</p>
+                    </div>
+                    <button class="text-primary hover:text-indigo-700 flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-1">
+                            <i class="ri-edit-line"></i>
+                        </div>
+                        <span>Change</span>
+                    </button>
+                </div>
+            </div>
+            <!-- User Details Form -->
+            <div class="px-6 py-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Your Details</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <input type="text" id="fullName" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                        <label for="fullName" class="text-sm">Full Name</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                        <label for="email" class="text-sm">Email Address</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                        <label for="phone" class="text-sm">Phone Number</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="relative">
+                            <input type="text" id="service" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent pr-10" placeholder=" ">
+                            <label for="service" class="text-sm">Select Service</label>
+                            <div class="absolute right-3 top-3 w-5 h-5 flex items-center justify-center text-gray-400">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group md:col-span-2">
+                        <textarea id="specialRequests" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" "></textarea>
+                        <label for="specialRequests" class="text-sm">Special Requests (Optional)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Preferences -->
+            <div class="px-6 py-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Notification Preferences</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium text-gray-900">Email Notifications</h4>
+                            <p class="text-sm text-gray-500">Receive booking confirmation and reminders via email</p>
+                        </div>
+                        <label class="custom-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium text-gray-900">SMS Notifications</h4>
+                            <p class="text-sm text-gray-500">Receive booking confirmation and reminders via SMS</p>
+                        </div>
+                        <label class="custom-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-medium text-gray-900">Reminder Notification</h4>
+                            <p class="text-sm text-gray-500">Receive a reminder before your appointment</p>
+                        </div>
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-gray-300 rounded px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                <option>30 minutes before</option>
+                                <option>1 hour before</option>
+                                <option>2 hours before</option>
+                                <option>1 day before</option>
+                            </select>
+                            <div class="absolute right-2 top-2.5 w-5 h-5 flex items-center justify-center text-gray-400 pointer-events-none">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <div class="px-6 py-6 border-b border-gray-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Payment Details</h3>
+                    <div class="flex items-center">
+                        <div class="w-5 h-5 flex items-center justify-center text-secondary mr-1">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">Secure Payment</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-600">Standard Consultation</span>
+                        <span class="font-medium">$45.00</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2 text-sm text-gray-500">
+                        <span>Service Fee</span>
+                        <span>$5.00</span>
+                    </div>
+                    <div class="border-t border-gray-200 my-2 pt-2 flex justify-between items-center font-medium">
+                        <span>Total</span>
+                        <span class="text-lg">$50.00</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium text-gray-900 mb-3">Select Payment Method</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                        <div class="payment-method border border-gray-200 rounded p-3 flex flex-col items-center cursor-pointer hover:border-primary">
+                            <div class="w-8 h-8 flex items-center justify-center mb-1">
+                                <i class="ri-visa-fill ri-lg"></i>
+                            </div>
+                            <span class="text-sm">Credit Card</span>
+                        </div>
+                        <div class="payment-method border border-gray-200 rounded p-3 flex flex-col items-center cursor-pointer hover:border-primary">
+                            <div class="w-8 h-8 flex items-center justify-center mb-1">
+                                <i class="ri-paypal-fill ri-lg"></i>
+                            </div>
+                            <span class="text-sm">PayPal</span>
+                        </div>
+                        <div class="payment-method border border-gray-200 rounded p-3 flex flex-col items-center cursor-pointer hover:border-primary">
+                            <div class="w-8 h-8 flex items-center justify-center mb-1">
+                                <i class="ri-apple-fill ri-lg"></i>
+                            </div>
+                            <span class="text-sm">Apple Pay</span>
+                        </div>
+                        <div class="payment-method border border-gray-200 rounded p-3 flex flex-col items-center cursor-pointer hover:border-primary">
+                            <div class="w-8 h-8 flex items-center justify-center mb-1">
+                                <i class="ri-bank-card-fill ri-lg"></i>
+                            </div>
+                            <span class="text-sm">Bank Transfer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900 mb-3">Card Details</h4>
+                        <div class="space-y-4">
+                            <div class="form-group">
+                                <input type="text" id="cardName" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                                <label for="cardName" class="text-sm">Name on Card</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="relative">
+                                    <input type="text" id="cardNumber" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                                    <label for="cardNumber" class="text-sm">Card Number</label>
+                                    <div class="absolute right-3 top-3 flex space-x-1">
+                                        <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                            <i class="ri-visa-line"></i>
+                                        </div>
+                                        <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                            <i class="ri-mastercard-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <input type="text" id="expiry" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                                    <label for="expiry" class="text-sm">Expiry Date (MM/YY)</label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="relative">
+                                        <input type="text" id="cvv" class="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary/20 placeholder-transparent" placeholder=" ">
+                                        <label for="cvv" class="text-sm">CVV</label>
+                                        <div class="absolute right-3 top-3 w-5 h-5 flex items-center justify-center text-gray-400">
+                                            <i class="ri-question-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms and Confirm -->
+            <div class="px-6 py-6">
+                <div class="flex items-start mb-6">
+                    <div class="flex items-center h-5">
+                        <input id="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary/20">
+                    </div>
+                    <label for="terms" class="ml-2 text-sm text-gray-600">
+                        I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Cancellation Policy</a>
+                    </label>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-end gap-3">
+                    <button class="px-6 py-3 border border-gray-300 !rounded-button whitespace-nowrap hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button id="confirmBookingBtn" class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-indigo-600 transition-colors flex items-center justify-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-1">
+                            <i class="ri-check-line"></i>
+                        </div>
+                        Confirm Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal (hidden by default) -->
+    <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="modal bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900">Booking Confirmed!</h3>
+                    <button id="closeModalBtn" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-500">
+                        <i class="ri-close-line ri-lg"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex justify-center mb-6">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-secondary">
+                        <i class="ri-check-line ri-2x"></i>
+                    </div>
+                </div>
+                
+                <h4 class="text-center text-lg font-medium text-gray-900 mb-1">Your slot has been booked successfully!</h4>
+                <p class="text-center text-gray-600 mb-6">We've sent a confirmation to your email.</p>
+                
+                <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Booking Reference</p>
+                            <p class="font-medium">#QW25042601</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Date & Time</p>
+                            <p class="font-medium">Apr 26, 11:00 AM</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Service</p>
+                            <p class="font-medium">Standard Consultation</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Total Amount</p>
+                            <p class="font-medium">$50.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <button class="bg-primary text-white px-4 py-3 !rounded-button whitespace-nowrap hover:bg-indigo-600 transition-colors flex items-center justify-center">
+                        <div class="w-5 h-5 flex items-center justify-center mr-1">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        Add to Calendar
+                    </button>
+                    <button class="border border-gray-300 px-4 py-3 !rounded-button whitespace-nowrap hover:bg-gray-50 transition-colors">
+                        Return to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const availableSlots = document.querySelectorAll('.slot.available');
+            const bookedSlots = document.querySelectorAll('.slot.booked');
+            const selectedSlot = document.querySelector('.slot.selected');
+            const confirmBtn = document.getElementById('confirmBookingBtn');
+            const modal = document.getElementById('confirmationModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            // Add animation classes to slots
+            availableSlots.forEach((slot, index) => {
+                setTimeout(() => {
+                    slot.classList.add('fade-in');
+                }, index * 50);
+                
+                slot.addEventListener('click', function() {
+                    // Remove selected class from all slots
+                    document.querySelectorAll('.slot.selected').forEach(s => {
+                        s.classList.remove('selected');
+                        s.classList.add('available');
+                    });
+                    
+                    // Add selected class to clicked slot
+                    this.classList.remove('available');
+                    this.classList.add('selected');
+                });
+            });
+            
+            bookedSlots.forEach((slot, index) => {
+                setTimeout(() => {
+                    slot.classList.add('fade-in');
+                }, index * 50);
+            });
+            
+            // Show confirmation modal on button click
+            confirmBtn.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+            
+            // Close modal on button click
+            closeModalBtn.addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

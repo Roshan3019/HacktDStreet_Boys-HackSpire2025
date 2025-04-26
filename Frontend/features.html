@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueueWise Pro - Features</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.3);
+        }
+        
+        .priority-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .priority-icon:hover {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .prediction-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .prediction-icon:hover {
+            animation: bounce 1s ease;
+        }
+        
+        .analytics-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .analytics-icon:hover {
+            animation: rotate 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=Modern%2520queue%2520management%2520system%2520interface%2520with%2520clean%2520design%252C%2520showing%2520digital%2520displays%2520and%2520mobile%2520app%2520integration.%2520The%2520left%2520side%2520has%2520a%2520clean%2520gradient%2520background%2520that%2520transitions%2520smoothly%2520to%2520the%2520right%2520side%2520showing%2520the%2520interface.%2520Professional%2520business%2520environment%252C%2520high-tech%2520appearance%252C%2520soft%2520lighting.&width=1600&height=800&seq=123456&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="./index.html" class="text-2xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="./booking.html" class="text-gray-600 hover:text-primary transition-colors">Booking</a>
+                    <a href="./queue.html" class="text-gray-600 hover:text-primary transition-colors">Queue</a>
+                    <a href="./features.html" class="text-gray-600 hover:text-primary transition-colors">Feature</a>
+                    <a href="./contact_us.html" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="./sign_in.html" class="text-gray-600 hover:text-primary transition-colors">Sign In</a>
+                    <a href="ready.html" data-readdy="true"
+                        class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get
+                        Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-32 pb-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Powerful Features to Transform Your Queue Management</h1>
+                <p class="text-lg text-gray-700 mb-8">Discover how QueueWise Pro's innovative features can streamline your operations, enhance customer satisfaction, and boost efficiency.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#features" class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 transition-colors text-center whitespace-nowrap">Explore Features</a>
+                    <a href="#" class="bg-white text-primary border border-primary px-8 py-3 !rounded-button hover:bg-gray-50 transition-colors text-center whitespace-nowrap">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Key Features</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our comprehensive queue management solution offers powerful tools designed to optimize your operations and enhance customer experience.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Real-Time Queue Updates -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-6 feature-icon">
+                            <i class="ri-time-line ri-2x text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Real-Time Queue Updates</h3>
+                            <p class="text-gray-600">Get instant visibility into your queue status, wait times, and service durations.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex justify-between mb-4">
+                            <span class="text-gray-700 font-medium">Current Queue Status</span>
+                            <span class="text-primary font-semibold">Active</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Customers in Queue</span>
+                                <span class="font-medium">14</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Average Wait Time</span>
+                                <span class="font-medium">12 min</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Current Service Time</span>
+                                <span class="font-medium">4.5 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priority Booking -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mr-6 priority-icon">
+                            <i class="ri-calendar-check-line ri-2x text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Priority Booking</h3>
+                            <p class="text-gray-600">Allow customers to skip the queue with advanced reservations and priority service.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-check-line text-secondary"></i>
+                                </div>
+                                <span class="text-gray-700">Scheduled appointments</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-check-line text-secondary"></i>
+                                </div>
+                                <span class="text-gray-700">VIP customer prioritization</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-check-line text-secondary"></i>
+                                </div>
+                                <span class="text-gray-700">Automatic reminders</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 bg-secondary text-white px-6 py-2 !rounded-button hover:bg-secondary/90 transition-colors w-full whitespace-nowrap">Book Priority Slot</button>
+                    </div>
+                </div>
+
+                <!-- Personalized Wait Time Predictions -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-6 prediction-icon">
+                            <i class="ri-line-chart-line ri-2x text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Personalized Wait Time Predictions</h3>
+                            <p class="text-gray-600">Provide accurate wait time estimates based on historical data and current conditions.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">Predicted Wait Time</span>
+                                <span class="text-primary font-semibold">18 minutes</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>0 min</span>
+                                <span>30 min</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p>Based on current queue length, staff availability, and historical service times for Tuesday at 2:45 PM.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Dashboard -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mr-6 analytics-icon">
+                            <i class="ri-dashboard-line ri-2x text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Analytics Dashboard</h3>
+                            <p class="text-gray-600">Gain valuable insights into queue performance, customer behavior, and operational efficiency.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="h-48 mb-4" id="analyticsChart"></div>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-gray-600 text-sm">Avg. Wait Time</p>
+                                <p class="text-primary font-semibold">14.2 min</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-gray-600 text-sm">Peak Hours</p>
+                                <p class="text-secondary font-semibold">11 AM - 2 PM</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-gray-600 text-sm">Customers Served</p>
+                                <p class="text-primary font-semibold">243 today</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-gray-600 text-sm">Satisfaction</p>
+                                <p class="text-secondary font-semibold">92%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Features -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">More Powerful Features</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore the complete suite of tools designed to revolutionize your queue management experience.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-notification-3-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">SMS & Email Notifications</h3>
+                    <p class="text-gray-600">Keep customers informed with automated updates about their queue status and estimated wait times.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-customer-service-2-line ri-xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Staff Management</h3>
+                    <p class="text-gray-600">Optimize staff allocation based on queue demand and track performance metrics in real-time.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-translate-2-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Multi-language Support</h3>
+                    <p class="text-gray-600">Serve diverse customer bases with support for over 20 languages in all customer-facing interfaces.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-survey-line ri-xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Customer Feedback</h3>
+                    <p class="text-gray-600">Collect and analyze customer satisfaction data to continuously improve service quality.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-device-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Multi-device Access</h3>
+                    <p class="text-gray-600">Manage your queue from anywhere with our responsive web app, mobile apps, and kiosk mode.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-5">
+                        <i class="ri-shield-check-line ri-xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Enterprise Security</h3>
+                    <p class="text-gray-600">Protect customer data with enterprise-grade security features and compliance with privacy regulations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User-Friendly Navigation -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">User-Friendly Navigation</h2>
+                    <p class="text-lg text-gray-600 mb-8">Our intuitive interface makes it easy for both customers and staff to navigate the system with minimal training. Enjoy smooth scrolling, interactive elements, and a responsive design that works on any device.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">Intuitive dashboard layout</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">Customizable interface elements</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">Accessibility compliant design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">Interactive help system</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-lg font-semibold text-gray-900">Navigation Demo</h4>
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <div class="w-1/4 py-2 text-center bg-primary text-white rounded-tl-lg rounded-bl-lg">Dashboard</div>
+                                <div class="w-1/4 py-2 text-center bg-gray-200 text-gray-700">Queues</div>
+                                <div class="w-1/4 py-2 text-center bg-gray-200 text-gray-700">Customers</div>
+                                <div class="w-1/4 py-2 text-center bg-gray-200 text-gray-700 rounded-tr-lg rounded-br-lg">Reports</div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium text-gray-800">Main Queue</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Active</span>
+                                </div>
+                                <div class="mt-2 flex justify-between text-sm">
+                                    <span class="text-gray-600">12 customers waiting</span>
+                                    <span class="text-primary font-medium">Manage →</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium text-gray-800">Priority Queue</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Active</span>
+                                </div>
+                                <div class="mt-2 flex justify-between text-sm">
+                                    <span class="text-gray-600">3 customers waiting</span>
+                                    <span class="text-primary font-medium">Manage →</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium text-gray-800">Service Desk</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">Closed</span>
+                                </div>
+                                <div class="mt-2 flex justify-between text-sm">
+                                    <span class="text-gray-600">Opens at 9:00 AM</span>
+                                    <span class="text-primary font-medium">Manage →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary/90 to-primary">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Queue Management?</h2>
+            <p class="text-xl text-white/90 mb-10 max-w-3xl mx-auto">Join thousands of businesses that have improved customer satisfaction and operational efficiency with QueueWise Pro.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-gray-100 transition-colors font-medium whitespace-nowrap">Start Free Trial</a>
+                <a href="#" class="bg-transparent text-white border border-white px-8 py-3 !rounded-button hover:bg-white/10 transition-colors font-medium whitespace-nowrap">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">QueueWise Pro</a>
+                    <p class="text-gray-400 mb-6">Transforming queue management for businesses worldwide since 2020.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <i class="ri-twitter-x-line ri-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <i class="ri-facebook-circle-line ri-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <i class="ri-linkedin-box-line ri-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <i class="ri-instagram-line ri-lg"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Integrations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Enterprise</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Security</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">©️ 2025 QueueWise Pro. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-visa-line text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-mastercard-line text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-paypal-line text-gray-400"></i>
+                    </div>
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-apple-fill text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Analytics Chart
+            var chartDom = document.getElementById('analyticsChart');
+            if (chartDom) {
+                var myChart = echarts.init(chartDom);
+                var option = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        top: 10,
+                        right: 0,
+                        bottom: 0,
+                        left: 0
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#6b7280'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            color: '#6b7280'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#e5e7eb'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Wait Time (min)',
+                            type: 'line',
+                            data: [8, 12, 15, 9, 11, 7, 5],
+                            smooth: true,
+                            symbol: 'none',
+                            lineStyle: {
+                                color: 'rgba(87, 181, 231, 1)'
+                            },
+                            areaStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [
+                                        {
+                                            offset: 0,
+                                            color: 'rgba(87, 181, 231, 0.2)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(87, 181, 231, 0.0)'
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            name: 'Customers Served',
+                            type: 'bar',
+                            data: [120, 132, 145, 160, 178, 110, 98],
+                            barWidth: '60%',
+                            itemStyle: {
+                                color: 'rgba(141, 211, 199, 1)',
+                                borderRadius: [4, 4, 0, 0]
+                            }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                
+                window.addEventListener('resize', function() {
+                    myChart.resize();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - QueueWise Pro</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .form-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .welcome-text {
+            animation: slideUp 0.8s ease-out;
+        }
+        .form-field {
+            animation: slideIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        .form-field:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .form-field:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .form-field:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .social-btn {
+            transition: transform 0.2s ease;
+        }
+        .social-btn:hover {
+            transform: scale(1.05);
+        }
+        .sign-in-btn {
+            transition: all 0.3s ease;
+        }
+        .sign-in-btn:hover {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+        }
+        .sign-in-btn:active {
+            transform: scale(0.98);
+        }
+        .forgot-password, .signup-link {
+            transition: all 0.2s ease;
+        }
+        .forgot-password:hover, .signup-link:hover {
+            color: #4f46e5;
+        }
+        input[type="email"], input[type="password"], input[type="text"] {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .password-toggle {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="form-container bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="font-['Pacifico'] text-3xl text-primary mb-2">QueueWise Pro</h1>
+            <h2 class="welcome-text text-2xl font-bold text-gray-800 mb-2">Welcome Back!</h2>
+            <p class="welcome-text text-gray-600">Sign in to manage your queue experience</p>
+        </div>
+        
+        <form class="space-y-6">
+            <div class="form-field">
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required 
+                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded focus:outline-none text-sm">
+                </div>
+            </div>
+            
+            <div class="form-field">
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                            <i class="ri-lock-line"></i>
+                        </div>
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required 
+                        class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded focus:outline-none text-sm">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 password-toggle">
+                        <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                            <i class="ri-eye-off-line" id="password-toggle-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-1">
+                    <a href="#" class="forgot-password text-sm text-gray-600 hover:underline">Forgot Password?</a>
+                </div>
+            </div>
+            
+            <div class="form-field">
+                <button type="submit" class="sign-in-btn w-full bg-primary text-white py-3 rounded-button font-medium text-sm !rounded-button whitespace-nowrap">
+                    Sign In
+                </button>
+            </div>
+        </form>
+        
+        <div class="mt-6">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                </div>
+            </div>
+            
+            <div class="mt-6 grid grid-cols-2 gap-3">
+                <button type="button" class="social-btn flex justify-center items-center py-2.5 px-4 border border-gray-300 rounded-button shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button whitespace-nowrap">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-google-fill text-[#4285F4]"></i>
+                    </div>
+                    Google
+                </button>
+                <button type="button" class="social-btn flex justify-center items-center py-2.5 px-4 border border-gray-300 rounded-button shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 !rounded-button whitespace-nowrap">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-facebook-fill text-[#1877F2]"></i>
+                    </div>
+                    Facebook
+                </button>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <p class="text-gray-600 text-sm">
+                Don't have an account? 
+                <a href="#" class="signup-link text-primary font-medium hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('password-toggle-icon');
+            const toggleButton = document.querySelector('.password-toggle');
+            
+            toggleButton.addEventListener('click', function() {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    toggleIcon.className = 'ri-eye-line';
+                } else {
+                    passwordInput.type = 'password';
+                    toggleIcon.className = 'ri-eye-off-line';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

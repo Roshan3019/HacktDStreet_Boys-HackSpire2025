@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - QueueWise Pro</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .animate-cascade {
+            animation: fadeSlideIn 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .animate-shake {
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .success-message {
+            animation: popBounce 0.5s ease forwards;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        
+        @keyframes popBounce {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .social-icon:hover {
+            animation: bounce 0.5s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .map-container:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="./index.html" class="text-2xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="./booking.html" class="text-gray-600 hover:text-primary transition-colors">Booking</a>
+                    <a href="./queue.html" class="text-gray-600 hover:text-primary transition-colors">Queue</a>
+                    <a href="./features.html" class="text-gray-600 hover:text-primary transition-colors">Feature</a>
+                    <a href="./contact_us.html" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="./sign_in.html" class="text-gray-600 hover:text-primary transition-colors">Sign In</a>
+                    <a href="ready.html" data-readdy="true"
+                        class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get
+                        Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-white to-indigo-50 py-16">
+        <div class="container mx-auto px-4 text-center max-w-3xl animate-fade-up" style="animation-delay: 0.1s;">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">We'd Love to Hear From You</h1>
+            <p class="text-lg text-gray-600 mb-8">Have questions about QueueWise Pro? Need support? Or just want to say hello? We're here to help you get the most out of our platform.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow-md p-8" id="contact-form-container">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-up" style="animation-delay: 0.2s;">Send Us a Message</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="animate-cascade" style="animation-delay: 0.3s;">
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-full flex items-center justify-center">
+                                <i class="ri-user-line text-gray-400"></i>
+                            </div>
+                            <input type="text" id="fullName" name="fullName" class="pl-10 w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-gray-800" placeholder="John Smith" required>
+                        </div>
+                        <p class="error-message text-red-500 text-sm mt-1 hidden">Please enter your full name</p>
+                    </div>
+
+                    <div class="animate-cascade" style="animation-delay: 0.4s;">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-full flex items-center justify-center">
+                                <i class="ri-mail-line text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" name="email" class="pl-10 w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-gray-800" placeholder="your.email@example.com" required>
+                        </div>
+                        <p class="error-message text-red-500 text-sm mt-1 hidden">Please enter a valid email address</p>
+                    </div>
+
+                    <div class="animate-cascade" style="animation-delay: 0.5s;">
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-full flex items-center justify-center">
+                                <i class="ri-chat-1-line text-gray-400"></i>
+                            </div>
+                            <div class="relative">
+                                <select id="subject" name="subject" class="pl-10 w-full px-4 py-3 pr-8 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-gray-800 appearance-none">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="feedback">Product Feedback</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none w-10 h-full flex items-center justify-center">
+                                    <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-cascade" style="animation-delay: 0.6s;">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                        <div class="relative">
+                            <div class="absolute top-3 left-0 pl-3 pointer-events-none w-10 h-10 flex items-center justify-center">
+                                <i class="ri-message-2-line text-gray-400"></i>
+                            </div>
+                            <textarea id="message" name="message" rows="5" class="pl-10 w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-gray-800" placeholder="How can we help you today?" required></textarea>
+                        </div>
+                        <p class="error-message text-red-500 text-sm mt-1 hidden">Please enter your message</p>
+                    </div>
+
+                    <div class="animate-cascade" style="animation-delay: 0.7s;">
+                        <button type="submit" class="w-full bg-primary text-white py-3 px-6 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors flex items-center justify-center">
+                            <span>Send Message</span>
+                            <i class="ri-send-plane-fill ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message (Hidden by Default) -->
+                <div id="successMessage" class="hidden success-message bg-green-50 border border-green-200 text-green-800 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-check-line ri-2x text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Thank You!</h3>
+                    <p class="text-green-700">Your message has been sent successfully. We'll get back to you as soon as possible.</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-md p-8 animate-fade-up" style="animation-delay: 0.3s;">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+                                <i class="ri-mail-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Email</h3>
+                                <a href="mailto:support@queuewisepro.com" class="text-gray-800 hover:text-primary transition-colors">support@queuewisepro.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+                                <i class="ri-phone-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Phone</h3>
+                                <a href="tel:+18005551234" class="text-gray-800 hover:text-primary transition-colors">+1 (800) 555-1234</a>
+                                <p class="text-sm text-gray-500 mt-1">Monday-Friday, 9AM-6PM EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Office</h3>
+                                <p class="text-gray-800">123 Innovation Drive, Suite 400<br>Boston, MA 02110</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-100">
+                        <h3 class="text-sm font-medium text-gray-500 mb-4">Connect With Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+                                <i class="ri-twitter-x-line text-gray-600 hover:text-primary transition-colors"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+                                <i class="ri-linkedin-line text-gray-600 hover:text-primary transition-colors"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+                                <i class="ri-facebook-line text-gray-600 hover:text-primary transition-colors"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary/10 rounded-full transition-colors">
+                                <i class="ri-instagram-line text-gray-600 hover:text-primary transition-colors"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map -->
+                <div class="bg-white rounded-lg shadow-md p-4 map-container animate-fade-up transition-transform" style="animation-delay: 0.4s;">
+                    <div class="rounded overflow-hidden h-[300px] relative">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full animate-pulse shadow-lg">
+                                <i class="ri-map-pin-fill text-white ri-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">What is the typical response time?</h3>
+                    <p class="text-gray-600">We aim to respond to all inquiries within 24 hours during business days. For urgent technical issues, premium support customers receive priority assistance.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Do you offer phone support?</h3>
+                    <p class="text-gray-600">Yes, phone support is available for Business and Enterprise plan customers. Standard plan users can schedule a call with our support team as needed.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Can I request a product demo?</h3>
+                    <p class="text-gray-600">Absolutely! You can request a personalized demo through our contact form. Select "Product Demo" as the subject, and our sales team will arrange a convenient time.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">How do I report a bug?</h3>
+                    <p class="text-gray-600">For bug reports, please select "Technical Support" in the contact form and provide detailed information about the issue, including steps to reproduce, screenshots, and your account details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">QueueWise Pro</a>
+                    <p class="text-gray-400 mb-6">Streamline your queue management with our intuitive platform designed for businesses of all sizes.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full transition-colors">
+                            <i class="ri-twitter-x-line text-gray-400 hover:text-white transition-colors"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full transition-colors">
+                            <i class="ri-linkedin-line text-gray-400 hover:text-white transition-colors"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-gray-700 rounded-full transition-colors">
+                            <i class="ri-facebook-line text-gray-400 hover:text-white transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Integrations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">GDPR Compliance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 QueueWise Pro. All rights reserved.</p>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center text-gray-500 text-sm">
+                        <i class="ri-visa-line ri-lg mr-2"></i>
+                        <i class="ri-mastercard-line ri-lg mr-2"></i>
+                        <i class="ri-paypal-line ri-lg mr-2"></i>
+                        <i class="ri-apple-line ri-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const formContainer = document.getElementById('contact-form-container');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Form validation
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Validate full name
+                const fullName = document.getElementById('fullName');
+                if (!fullName.value.trim()) {
+                    isValid = false;
+                    showError(fullName, 'Please enter your full name');
+                } else {
+                    hideError(fullName);
+                }
+                
+                // Validate email
+                const email = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.value.trim() || !emailRegex.test(email.value)) {
+                    isValid = false;
+                    showError(email, 'Please enter a valid email address');
+                } else {
+                    hideError(email);
+                }
+                
+                // Validate message
+                const message = document.getElementById('message');
+                if (!message.value.trim()) {
+                    isValid = false;
+                    showError(message, 'Please enter your message');
+                } else {
+                    hideError(message);
+                }
+                
+                // If form is valid, show success message
+                if (isValid) {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Reset form after 5 seconds for demo purposes
+                    setTimeout(() => {
+                        form.reset();
+                        form.classList.remove('hidden');
+                        successMessage.classList.add('hidden');
+                    }, 5000);
+                }
+            });
+            
+            // Show error message
+            function showError(input, message) {
+                const errorElement = input.parentElement.parentElement.querySelector('.error-message');
+                errorElement.textContent = message;
+                errorElement.classList.remove('hidden');
+                input.classList.add('border-red-500');
+                input.classList.add('animate-shake');
+                
+                // Remove shake animation after it completes
+                setTimeout(() => {
+                    input.classList.remove('animate-shake');
+                }, 500);
+            }
+            
+            // Hide error message
+            function hideError(input) {
+                const errorElement = input.parentElement.parentElement.querySelector('.error-message');
+                errorElement.classList.add('hidden');
+                input.classList.remove('border-red-500');
+            }
+            
+            // Live validation on blur
+            document.querySelectorAll('input, textarea').forEach(element => {
+                element.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        showError(this, `Please enter your ${this.id === 'fullName' ? 'full name' : this.id === 'email' ? 'email address' : 'message'}`);
+                    } else if (this.id === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(this.value) && this.value.trim()) {
+                            showError(this, 'Please enter a valid email address');
+                        } else {
+                            hideError(this);
+                        }
+                    } else {
+                        hideError(this);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
