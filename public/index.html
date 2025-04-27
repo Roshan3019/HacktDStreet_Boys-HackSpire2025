@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QueueWise Pro - AI-powered Queue Management System</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
+.hero-section {
+background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%), url('https://readdy.ai/api/search-image?query=Modern%2520queue%2520management%2520system%2520with%2520people%2520waiting%2520in%2520line%2520at%2520a%2520service%2520center%252C%2520digital%2520displays%2520showing%2520wait%2520times%252C%2520professional%2520environment%252C%2520clean%2520minimalist%2520design%252C%2520soft%2520lighting%252C%2520blue%2520and%2520white%2520color%2520scheme%252C%2520high-tech%2520appearance%252C%2520people%2520using%2520mobile%2520phones%2520while%2520waiting&width=1200&height=600&seq=hero1&orientation=landscape');
+background-size: cover;
+background-position: right center;
+}
+.gradient-text {
+background: linear-gradient(90deg, #4f46e5, #10b981);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.feature-card {
+transition: all 0.3s ease;
+}
+.feature-card:hover {
+transform: translateY(-8px);
+}
+.step-card {
+transition: all 0.3s ease;
+}
+.step-card:hover {
+transform: scale(1.03);
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+animation: fadeIn 0.8s ease forwards;
+}
+.typing-effect {
+overflow: hidden;
+white-space: nowrap;
+border-right: 3px solid #4f46e5;
+animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: #4f46e5 }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.cta-button {
+position: relative;
+overflow: hidden;
+}
+.cta-button::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.2);
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.cta-button:hover::after {
+transform: translateX(0);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center">
+<a href="./index.html" class="text-2xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+</div>
+<div class="hidden md:flex space-x-8">
+<a href="./booking.html" class="text-gray-600 hover:text-primary transition-colors">Booking</a>
+<a href="./queue.html" class="text-gray-600 hover:text-primary transition-colors">Queue</a>
+<a href="./features.html" class="text-gray-600 hover:text-primary transition-colors">Feature</a>
+<a href="./contact_us.html" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+</div>
+<div class="flex items-center space-x-4">
+<a href="./sign_in.html" class="text-gray-600 hover:text-primary transition-colors">Sign In</a>
+<a href="ready.html" data-readdy="true" class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="hero-section min-h-[600px] flex items-center">
+<div class="w-full max-w-7xl mx-auto px-6 py-20">
+<div class="max-w-2xl animate-fadeIn" style="animation-delay: 0.2s;">
+<h1 class="text-4xl md:text-5xl font-bold mb-4 typing-effect">Smarter Queuing Starts Here</h1>
+<p class="text-xl text-gray-600 mb-8">AI-powered wait-time predictions & slot booking that save time and reduce frustration.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#check-queue" class="cta-button bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors flex items-center whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-time-line"></i>
+</div>
+Check Queue
+</a>
+<a href="./booking.html" class="cta-button bg-white text-primary border border-primary px-6 py-3 !rounded-button hover:bg-gray-50 transition-colors flex items-center whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-calendar-check-line"></i>
+</div>
+Book Now
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section id="features" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Smart Features for Seamless Queuing</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Our AI-powered system revolutionizes how businesses manage queues and how customers experience waiting.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="feature-card bg-white rounded-lg p-6 shadow-lg border border-gray-100 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-timer-flash-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold mb-3">Real-Time Wait Times</h3>
+<p class="text-gray-600">Get accurate predictions of wait times based on historical data, current queue length, and staff availability.</p>
+</div>
+<!-- Feature 2 -->
+<div class="feature-card bg-white rounded-lg p-6 shadow-lg border border-gray-100 animate-fadeIn" style="animation-delay: 0.5s;">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-calendar-2-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold mb-3">Smart Slot Recommendations</h3>
+<p class="text-gray-600">Our AI analyzes patterns to recommend the best times to visit, helping you avoid peak hours and minimize waiting.</p>
+</div>
+<!-- Feature 3 -->
+<div class="feature-card bg-white rounded-lg p-6 shadow-lg border border-gray-100 animate-fadeIn" style="animation-delay: 0.7s;">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-alert-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold mb-3">Anomaly Alerts</h3>
+<p class="text-gray-600">Receive notifications when unexpected delays occur, allowing you to adjust your plans accordingly.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">How QueueWise Pro Works</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Our simple 4-step process makes queue management effortless for both businesses and customers.</p>
+</div>
+<div class="grid md:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="step-card bg-white rounded-lg p-6 shadow-md border border-gray-100 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6 mx-auto">
+<span class="font-bold">1</span>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">Select Center</h3>
+<p class="text-gray-600 text-center">Choose from available service centers near your location.</p>
+<div class="mt-4 flex justify-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-map-pin-line ri-xl"></i>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="step-card bg-white rounded-lg p-6 shadow-md border border-gray-100 animate-fadeIn" style="animation-delay: 0.5s;">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6 mx-auto">
+<span class="font-bold">2</span>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">View Predictions</h3>
+<p class="text-gray-600 text-center">See current wait times and AI-predicted best times to visit.</p>
+<div class="mt-4 flex justify-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-line-chart-line ri-xl"></i>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="step-card bg-white rounded-lg p-6 shadow-md border border-gray-100 animate-fadeIn" style="animation-delay: 0.7s;">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6 mx-auto">
+<span class="font-bold">3</span>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">Book Slot</h3>
+<p class="text-gray-600 text-center">Reserve your spot at your preferred time to avoid waiting in line.</p>
+<div class="mt-4 flex justify-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-calendar-check-line ri-xl"></i>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="step-card bg-white rounded-lg p-6 shadow-md border border-gray-100 animate-fadeIn" style="animation-delay: 0.9s;">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6 mx-auto">
+<span class="font-bold">4</span>
+</div>
+<h3 class="text-lg font-semibold text-center mb-3">Get Updates</h3>
+<p class="text-gray-600 text-center">Receive real-time notifications about your queue status and any changes.</p>
+<div class="mt-4 flex justify-center">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-notification-3-line ri-xl"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-primary/90 to-secondary/90 text-white">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-3xl font-bold mb-6 animate-fadeIn">Ready to Transform Your Queuing Experience?</h2>
+<p class="text-xl mb-8 max-w-2xl mx-auto animate-fadeIn" style="animation-delay: 0.3s;">Join thousands of businesses and customers who are saving time and improving satisfaction with QueueWise Pro.</p>
+<div class="flex flex-wrap justify-center gap-4 animate-fadeIn" style="animation-delay: 0.5s;">
+<a href="#" class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap">Get Started Free</a>
+<a href="#" class="bg-transparent border border-white text-white px-8 py-3 !rounded-button hover:bg-white/10 transition-colors whitespace-nowrap">Schedule Demo</a>
+</div>
+</div>
+</section>
+<!-- Queue Status Page Preview -->
+<section id="check-queue" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Check Real-Time Queue Status</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">View current wait times and make informed decisions about when to visit service centers.</p>
+</div>
+<div class="bg-gray-50 rounded-lg p-6 shadow-md mb-8 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="flex flex-col md:flex-row gap-4 mb-6">
+<div class="flex-grow">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="w-full pl-10 pr-4 py-3 border-none bg-white rounded shadow-sm focus:ring-2 focus:ring-primary/30 focus:outline-none" placeholder="Search service centers...">
+</div>
+</div>
+<div class="w-full md:w-64">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-map-pin-line"></i>
+</div>
+</div>
+<button class="w-full flex items-center justify-between pl-10 pr-4 py-3 bg-white rounded shadow-sm text-left border-none !rounded-button">
+<span class="text-gray-700">Select location</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Filter
+</button>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Center Card 1 -->
+<div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold">Downtown Medical Center</h3>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Normal</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">123 Main Street, New York, NY 10001</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-gray-700">Current queue: <span class="font-semibold">12 people</span></span>
+</div>
+<div class="flex items-center mb-6">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-700">Estimated wait: <span class="font-semibold">15-20 min</span></span>
+</div>
+<div class="flex justify-between">
+<button class="text-primary hover:text-primary/80 transition-colors flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-information-line"></i>
+</div>
+Details
+</button>
+<a href="./booking.html">
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Book Slot
+</button>
+</a>
+</div>
+</div>
+<!-- Center Card 2 -->
+<div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold">Westside DMV Office</h3>
+<span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Busy</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">456 West Avenue, New York, NY 10002</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-gray-700">Current queue: <span class="font-semibold">35 people</span></span>
+</div>
+<div class="flex items-center mb-6">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-700">Estimated wait: <span class="font-semibold">45-60 min</span></span>
+</div>
+<div class="flex justify-between">
+<button class="text-primary hover:text-primary/80 transition-colors flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-information-line"></i>
+</div>
+Details
+</button>
+<a href="./booking.html">
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Book Slot
+</button>
+</a>
+</div>
+</div>
+<!-- Center Card 3 -->
+<div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold">Eastside Tax Office</h3>
+<span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Very Busy</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">789 East Boulevard, New York, NY 10003</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-gray-700">Current queue: <span class="font-semibold">58 people</span></span>
+</div>
+<div class="flex items-center mb-6">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-700">Estimated wait: <span class="font-semibold">90-120 min</span></span>
+</div>
+<div class="flex justify-between">
+<button class="text-primary hover:text-primary/80 transition-colors flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-information-line"></i>
+</div>
+Details
+</button>
+<a href="./booking.html">
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Book Slot
+</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center animate-fadeIn" style="animation-delay: 0.5s;">
+<a href="./features.html" class="text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+View all service centers
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Slot Booking Preview -->
+<section id="book-now" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Book Your Slot in Advance</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Skip the line by booking a time slot that works for you. Our AI recommends the best times to visit.</p>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="flex flex-col md:flex-row">
+<!-- Booking Steps -->
+<div class="w-full md:w-1/3 bg-gray-50 p-6">
+<h3 class="text-lg font-semibold mb-6">Booking Steps</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+<span class="text-sm">1</span>
+</div>
+<span class="text-primary font-medium">Select Service Center</span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center mr-3">
+<span class="text-sm">2</span>
+</div>
+<span class="text-gray-600">Choose Date & Time</span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center mr-3">
+<span class="text-sm">3</span>
+</div>
+<span class="text-gray-600">Enter Details</span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center mr-3">
+<span class="text-sm">4</span>
+</div>
+<span class="text-gray-600">Confirm Booking</span>
+</div>
+</div>
+<div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-blue-500 mt-0.5 mr-2">
+<i class="ri-lightbulb-line"></i>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-blue-700 mb-1">AI Recommendation</h4>
+<p class="text-xs text-blue-600">Based on historical data, the best times to visit Downtown Medical Center are Tuesday mornings and Thursday afternoons.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Form -->
+<div class="w-full md:w-2/3 p-6">
+<h3 class="text-xl font-semibold mb-6">Select Service Center</h3>
+<div class="mb-6">
+<label class="block text-gray-700 mb-2">Search by name or location</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded focus:ring-2 focus:ring-primary/30 focus:outline-none" placeholder="Type to search...">
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-4">
+<!-- Center Option 1 -->
+<div class="border border-primary rounded-lg p-4 bg-primary/5 cursor-pointer">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-checkbox-circle-fill"></i>
+</div>
+<h4 class="font-medium">Downtown Medical Center</h4>
+</div>
+<p class="text-sm text-gray-600 ml-7">123 Main Street, New York, NY 10001</p>
+</div>
+<!-- Center Option 2 -->
+<div class="border border-gray-200 rounded-lg p-4 hover:border-gray-300 cursor-pointer">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<h4 class="font-medium">Westside DMV Office</h4>
+</div>
+<p class="text-sm text-gray-600 ml-7">456 West Avenue, New York, NY 10002</p>
+</div>
+<!-- Center Option 3 -->
+<div class="border border-gray-200 rounded-lg p-4 hover:border-gray-300 cursor-pointer">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<h4 class="font-medium">Eastside Tax Office</h4>
+</div>
+<p class="text-sm text-gray-600 ml-7">789 East Boulevard, New York, NY 10003</p>
+</div>
+<!-- Center Option 4 -->
+<div class="border border-gray-200 rounded-lg p-4 hover:border-gray-300 cursor-pointer">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<h4 class="font-medium">Northside Passport Center</h4>
+</div>
+<p class="text-sm text-gray-600 ml-7">321 North Road, New York, NY 10004</p>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Continue
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- User Dashboard Preview -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Personalized User Dashboard</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Track your bookings, view your visit history, and get personalized recommendations.</p>
+</div>
+<div class="bg-gray-50 rounded-lg shadow-md p-6 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Sidebar -->
+<div class="w-full md:w-64 bg-white rounded-lg shadow-sm p-4">
+<div class="flex items-center mb-6">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-user-line"></i>
+</div>
+</div>
+<div>
+<h3 class="font-medium">Michael Anderson</h3>
+<p class="text-sm text-gray-500">Premium Member</p>
+</div>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center p-3 bg-primary/10 text-primary rounded-lg">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-dashboard-line"></i>
+</div>
+<span>Dashboard</span>
+</button>
+<button class="w-full flex items-center p-3 text-gray-700 hover:bg-gray-50 rounded-lg">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-calendar-line"></i>
+</div>
+<span>My Bookings</span>
+</button>
+<button class="w-full flex items-center p-3 text-gray-700 hover:bg-gray-50 rounded-lg">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-history-line"></i>
+</div>
+<span>Visit History</span>
+</button>
+<button class="w-full flex items-center p-3 text-gray-700 hover:bg-gray-50 rounded-lg">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-settings-line"></i>
+</div>
+<span>Settings</span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1">
+<h3 class="text-xl font-semibold mb-6">Your Dashboard</h3>
+<!-- Upcoming Bookings -->
+<div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-medium">Upcoming Bookings</h4>
+<a href="#" class="text-primary text-sm hover:text-primary/80">View All</a>
+</div>
+<div class="border border-gray-100 rounded-lg overflow-hidden">
+<div class="p-4 border-b border-gray-100">
+<div class="flex justify-between items-start">
+<div>
+<h5 class="font-medium mb-1">Downtown Medical Center</h5>
+<p class="text-sm text-gray-600">April 28, 2025 • 10:30 AM</p>
+</div>
+<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+</div>
+<div class="mt-3 flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span>Estimated wait time: <span class="font-medium">5-10 min</span></span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<div>
+<h5 class="font-medium mb-1">Westside DMV Office</h5>
+<p class="text-sm text-gray-600">May 3, 2025 • 2:15 PM</p>
+</div>
+<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+</div>
+<div class="mt-3 flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center text-primary mr-2">
+<i class="ri-time-line"></i>
+</div>
+<span>Estimated wait time: <span class="font-medium">15-20 min</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Visit History -->
+<div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-medium">Recent Visit History</h4>
+<a href="#" class="text-primary text-sm hover:text-primary/80">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full">
+<thead>
+<tr class="border-b border-gray-100">
+<th class="text-left py-3 px-4 text-sm font-medium text-gray-600">Service Center</th>
+<th class="text-left py-3 px-4 text-sm font-medium text-gray-600">Date</th>
+<th class="text-left py-3 px-4 text-sm font-medium text-gray-600">Predicted Wait</th>
+<th class="text-left py-3 px-4 text-sm font-medium text-gray-600">Actual Wait</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4 text-sm">Downtown Medical Center</td>
+<td class="py-3 px-4 text-sm">Apr 12, 2025</td>
+<td class="py-3 px-4 text-sm">15-20 min</td>
+<td class="py-3 px-4 text-sm">18 min</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4 text-sm">Eastside Tax Office</td>
+<td class="py-3 px-4 text-sm">Mar 28, 2025</td>
+<td class="py-3 px-4 text-sm">30-45 min</td>
+<td class="py-3 px-4 text-sm">35 min</td>
+</tr>
+<tr>
+<td class="py-3 px-4 text-sm">Westside DMV Office</td>
+<td class="py-3 px-4 text-sm">Mar 15, 2025</td>
+<td class="py-3 px-4 text-sm">45-60 min</td>
+<td class="py-3 px-4 text-sm">50 min</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- AI Recommendations -->
+<div class="bg-white rounded-lg shadow-sm p-4">
+<h4 class="font-medium mb-4">AI Recommendations for You</h4>
+<div class="space-y-4">
+<div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
+<div class="flex">
+<div class="w-8 h-8 flex items-center justify-center text-blue-500 mr-3">
+<i class="ri-calendar-check-line"></i>
+</div>
+<div>
+<h5 class="text-sm font-medium text-blue-700 mb-1">Best time to visit Downtown Medical Center</h5>
+<p class="text-xs text-blue-600">Based on your past visits, Tuesday mornings between 9-10 AM typically have the shortest wait times.</p>
+</div>
+</div>
+</div>
+<div class="p-3 bg-yellow-50 rounded-lg border border-yellow-100">
+<div class="flex">
+<div class="w-8 h-8 flex items-center justify-center text-yellow-500 mr-3">
+<i class="ri-alert-line"></i>
+</div>
+<div>
+<h5 class="text-sm font-medium text-yellow-700 mb-1">Avoid Westside DMV Office next week</h5>
+<p class="text-xs text-yellow-600">Our AI predicts unusually high traffic due to end-of-month license renewals. Consider booking for the following week.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Admin Dashboard Preview -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Powerful Admin Dashboard</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Monitor queue performance, analyze trends, and optimize your service center operations.</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+<!-- Stat Card 1 -->
+<div class="bg-blue-50 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-blue-600">
+<i class="ri-user-line"></i>
+</div>
+</div>
+<span class="text-blue-600 text-sm font-medium">Current Queue</span>
+</div>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">42</span>
+<span class="text-green-600 text-xs flex items-center">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-arrow-down-line"></i>
+</div>
+12% from yesterday
+</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-green-50 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-green-600">
+<i class="ri-time-line"></i>
+</div>
+</div>
+<span class="text-green-600 text-sm font-medium">Avg Wait Time</span>
+</div>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">18 min</span>
+<span class="text-green-600 text-xs flex items-center">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-arrow-down-line"></i>
+</div>
+5% from yesterday
+</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-purple-50 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-purple-600">
+<i class="ri-calendar-check-line"></i>
+</div>
+</div>
+<span class="text-purple-600 text-sm font-medium">Bookings Today</span>
+</div>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">87</span>
+<span class="text-green-600 text-xs flex items-center">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-arrow-up-line"></i>
+</div>
+8% from yesterday
+</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-yellow-50 rounded-lg p-4">
+<div class="flex items-center mb-2">
+<div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
+<i class="ri-alert-line"></i>
+</div>
+</div>
+<span class="text-yellow-600 text-sm font-medium">Anomalies</span>
+</div>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">2</span>
+<span class="text-red-600 text-xs flex items-center">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-arrow-up-line"></i>
+</div>
+1 more than yesterday
+</span>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<!-- Traffic Chart -->
+<div class="bg-gray-50 rounded-lg p-4">
+<h3 class="text-lg font-semibold mb-4">Daily Traffic</h3>
+<div id="trafficChart" style="width: 100%; height: 300px;"></div>
+</div>
+<!-- Wait Time Chart -->
+<div class="bg-gray-50 rounded-lg p-4">
+<h3 class="text-lg font-semibold mb-4">Wait Time Accuracy</h3>
+<div id="waitTimeChart" style="width: 100%; height: 300px;"></div>
+</div>
+</div>
+<!-- Anomaly Alerts -->
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-semibold">Anomaly Alerts</h3>
+<button class="text-primary hover:text-primary/80 transition-colors text-sm">View All</button>
+</div>
+<div class="space-y-4">
+<div class="bg-white p-4 rounded-lg border border-red-100">
+<div class="flex items-start">
+<div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-red-600">
+<i class="ri-error-warning-line"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-1">
+<h4 class="font-medium mr-2">Unusual Queue Growth</h4>
+<span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">High Priority</span>
+</div>
+<p class="text-sm text-gray-600 mb-2">Downtown Medical Center is experiencing an unexpected 45% increase in queue size in the last hour.</p>
+<div class="flex items-center text-xs text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>15 minutes ago</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg border border-yellow-100">
+<div class="flex items-start">
+<div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
+<i class="ri-alert-line"></i>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-1">
+<h4 class="font-medium mr-2">Staff Shortage Detected</h4>
+<span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Medium Priority</span>
+</div>
+<p class="text-sm text-gray-600 mb-2">Westside DMV Office has 3 fewer staff members than optimal for current queue size.</p>
+<div class="flex items-center text-xs text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>45 minutes ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Simulation Page Preview -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">AI Simulation & Visualization</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">See how our AI predicts and adapts to changing queue conditions in real-time.</p>
+</div>
+<div class="bg-gray-50 rounded-lg shadow-md p-6 animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Simulation Controls -->
+<div class="w-full md:w-64 bg-white rounded-lg shadow-sm p-4">
+<h3 class="text-lg font-semibold mb-4">Simulation Controls</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Service Center</label>
+<select class="w-full px-3 py-2 border border-gray-200 rounded focus:ring-2 focus:ring-primary/30 focus:outline-none pr-8">
+<option>Downtown Medical Center</option>
+<option>Westside DMV Office</option>
+<option>Eastside Tax Office</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Scenario</label>
+<select class="w-full px-3 py-2 border border-gray-200 rounded focus:ring-2 focus:ring-primary/30 focus:outline-none pr-8">
+<option>Normal Day</option>
+<option>Peak Hours</option>
+<option>Staff Shortage</option>
+<option>Unexpected Rush</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Simulation Speed</label>
+<div class="flex items-center">
+<span class="text-xs text-gray-500 mr-2">1x</span>
+<input type="range" min="1" max="10" value="5" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer">
+<span class="text-xs text-gray-500 ml-2">10x</span>
+</div>
+</div>
+<div class="pt-4 flex flex-col gap-3">
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap w-full">
+Start Simulation
+</button>
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 !rounded-button hover:bg-gray-50 transition-colors whitespace-nowrap w-full">
+Reset
+</button>
+</div>
+</div>
+</div>
+<!-- Simulation Visualization -->
+<div class="flex-1 bg-white rounded-lg shadow-sm p-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-semibold">Simulation Results</h3>
+<div class="flex items-center text-sm">
+<span class="bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Simulation Running</span>
+<span class="text-gray-600">Time: 14:35</span>
+</div>
+</div>
+<div class="mb-6">
+<div id="simulationChart" style="width: 100%; height: 300px;"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-gray-50 rounded-lg p-4">
+<h4 class="text-sm font-medium text-gray-700 mb-2">Current Queue Status</h4>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">27</span>
+<span class="text-sm text-gray-600">people in queue</span>
+</div>
+<div class="mt-2 flex items-center text-sm">
+<div class="w-4 h-4 flex items-center justify-center text-primary mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span class="text-gray-600">Estimated wait: <span class="font-medium">35 min</span></span>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4">
+<h4 class="text-sm font-medium text-gray-700 mb-2">AI Prediction</h4>
+<div class="flex items-baseline">
+<span class="text-2xl font-bold text-gray-800 mr-2">42</span>
+<span class="text-sm text-gray-600">people in 30 minutes</span>
+</div>
+<div class="mt-2 flex items-center text-sm">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+<i class="ri-alert-line"></i>
+</div>
+<span class="text-yellow-600">Approaching peak capacity</span>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center text-blue-500 mr-3">
+<i class="ri-lightbulb-line"></i>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-blue-700 mb-1">AI Recommendation</h4>
+<p class="text-sm text-blue-600">Based on the current trend, we recommend opening 2 additional service counters in the next 15 minutes to prevent excessive wait times.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 animate-fadeIn">
+<h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about QueueWise Pro.</p>
+</div>
+<div class="max-w-3xl mx-auto animate-fadeIn" style="animation-delay: 0.3s;">
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 text-left focus:outline-none">
+<span class="font-medium">How accurate are the wait time predictions?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="px-4 pb-4">
+<p class="text-gray-600">Our AI-powered predictions are typically accurate within ±10% of actual wait times. The system continuously learns from historical data, current conditions, and staff availability to provide the most accurate estimates possible. As more data is collected, the predictions become even more accurate over time.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 text-left focus:outline-none">
+<span class="font-medium">How does the booking process work?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="px-4 pb-4">
+<p class="text-gray-600">Booking a slot is simple: select your desired service center, choose an available time slot (with AI recommendations for less busy times), enter your details, and confirm your booking. You'll receive a confirmation email with a QR code that you can scan upon arrival to check in quickly without waiting in line.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 text-left focus:outline-none">
+<span class="font-medium">What happens if I miss my booked slot?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="px-4 pb-4">
+<p class="text-gray-600">If you miss your booked slot, the system will hold your position for 10 minutes after your scheduled time. After that, your booking will be automatically canceled, and you'll need to make a new booking or join the regular queue. We recommend arriving 5 minutes before your scheduled time for the best experience.</p>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 text-left focus:outline-none">
+<span class="font-medium">How does QueueWise Pro protect my privacy?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="px-4 pb-4">
+<p class="text-gray-600">We take privacy seriously. Your personal information is encrypted and stored securely. We only collect the data necessary to provide our service, and we never sell your information to third parties. You can review our complete privacy policy for more details on how we protect your data.</p>
+</div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 text-left focus:outline-none">
+<span class="font-medium">Can businesses integrate QueueWise Pro with existing systems?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="px-4 pb-4">
+<p class="text-gray-600">Yes, QueueWise Pro offers API integration with most common customer management systems, appointment schedulers, and business software. Our team can provide custom integration solutions for unique requirements. Contact our sales team for specific integration questions.</p>
+</div>
+</div>
+</div>
+<div class="mt-10 text-center">
+<p class="text-gray-600 mb-4">Still have questions? Contact our support team.</p>
+<a href="#" class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors inline-block whitespace-nowrap">Contact Support</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">QueueWise Pro</a>
+<p class="text-gray-400 text-sm">AI-powered queue management that saves time and reduces frustration for businesses and customers.</p>
+<div class="flex space-x-4 mt-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-twitter-x-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-facebook-circle-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-linkedin-box-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Company</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Resources</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">API</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Status</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Legal</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">GDPR Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">&copy; 2025 QueueWise Pro. All rights reserved.</p>
+<div class="flex space-x-4 mt-4 md:mt-0">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-line ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-line ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-line ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-apple-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Traffic Chart
+const trafficChart = echarts.init(document.getElementById('trafficChart'));
+const trafficOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ddd',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '3%',
+top: '3%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: 'Visitors',
+type: 'line',
+stack: 'Total',
+smooth: true,
+lineStyle: {
+width: 2,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+}]
+}
+},
+emphasis: {
+focus: 'series'
+},
+data: [20, 32, 51, 74, 65, 80, 70, 60, 85, 40]
+}
+]
+};
+trafficChart.setOption(trafficOption);
+// Wait Time Chart
+const waitTimeChart = echarts.init(document.getElementById('waitTimeChart'));
+const waitTimeOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ddd',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['Predicted', 'Actual'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '15%',
+top: '3%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: 'Minutes',
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: 'Predicted',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 2,
+color: 'rgba(87, 181, 231, 1)'
+},
+emphasis: {
+focus: 'series'
+},
+data: [25, 20, 35, 30, 22, 18, 15]
+},
+{
+name: 'Actual',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 2,
+color: 'rgba(252, 141, 98, 1)'
+},
+emphasis: {
+focus: 'series'
+},
+data: [28, 19, 37, 32, 20, 16, 17]
+}
+]
+};
+waitTimeChart.setOption(waitTimeOption);
+// Simulation Chart
+const simulationChart = echarts.init(document.getElementById('simulationChart'));
+const simulationOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ddd',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['Actual Queue', 'Predicted Queue'],
+right: 10,
+top: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '3%',
+top: '10%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['14:00', '14:05', '14:10', '14:15', '14:20', '14:25', '14:30', '14:35', '14:40', '14:45', '14:50', '14:55', '15:00'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: 'People',
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: 'Actual Queue',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 2,
+color: 'rgba(87, 181, 231, 1)'
+},
+emphasis: {
+focus: 'series'
+},
+data: [15, 18, 20, 23, 25, 27, 27, 27, null, null, null, null, null]
+},
+{
+name: 'Predicted Queue',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 2,
+color: 'rgba(251, 191, 114, 1)',
+type: 'dashed'
+},
+emphasis: {
+focus: 'series'
+},
+data: [15, 18, 21, 24, 26, 28, 30, 33, 36, 39, 41, 42, 40]
+}
+]
+};
+simulationChart.setOption(simulationOption);
+// Resize charts when window size changes
+window.addEventListener('resize', function() {
+trafficChart.resize();
+waitTimeChart.resize();
+simulationChart.resize();
+});
+// FAQ Accordion
+const faqButtons = document.querySelectorAll('#faq button');
+faqButtons.forEach(button => {
+button.addEventListener('click', () => {
+const content = button.nextElementSibling;
+const icon = button.querySelector('i');
+if (content.style.maxHeight) {
+content.style.maxHeight = null;
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+} else {
+content.style.maxHeight = content.scrollHeight + 'px';
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+}
+});
+});
+// Animate elements on scroll
+const animateElements = document.querySelectorAll('.animate-fadeIn');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, { threshold: 0.1 });
+animateElements.forEach(element => {
+element.style.opacity = '0';
+element.style.transform = 'translateY(20px)';
+element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+observer.observe(element);
+});
+});
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>

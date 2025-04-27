@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - QueueWise Pro</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+}
+.password-strength {
+  height: 4px;
+  transition: all 0.3s ease;
+}
+.input-field:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.social-button {
+  transition: all 0.2s ease;
+}
+.social-button:hover {
+  transform: translateY(-2px);
+}
+.toggle-password {
+  cursor: pointer;
+}
+.form-container {
+  animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.benefit-item {
+  transition: all 0.3s ease;
+}
+.benefit-item:hover {
+  transform: translateY(-5px);
+}
+.tab-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease;
+}
+.tab-button.active::after {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<div class="min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm py-4 px-6">
+    <nav class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="./index.html" class="text-2xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="./booking.html" class="text-gray-600 hover:text-primary transition-colors">Booking</a>
+          <a href="./queue.html" class="text-gray-600 hover:text-primary transition-colors">Queue</a>
+          <a href="./features.html" class="text-gray-600 hover:text-primary transition-colors">Feature</a>
+          <a href="./contact_us.html" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="./sign_in.html" class="text-gray-600 hover:text-primary transition-colors">Sign In</a>
+          <a href="ready.html" data-readdy="true"
+            class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get
+            Started</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8 form-container">
+      <div class="text-center">
+        <a href="./index.html" class="inline-block text-3xl font-['Pacifico'] text-primary">QueueWise Pro</a>
+        <h2 class="mt-6 text-2xl font-bold text-gray-900">Create your account</h2>
+        <p class="mt-2 text-sm text-gray-600">Join thousands of users managing queues efficiently</p>
+      </div>
+
+      <div class="mt-8 bg-white py-8 px-6 shadow rounded-lg">
+        <div class="mb-6 flex justify-center space-x-4">
+          <button class="tab-button active px-4 py-2 text-primary font-medium">Sign Up</button>
+          <button class="tab-button px-4 py-2 text-gray-500 font-medium">Sign In</button>
+        </div>
+
+        <form class="space-y-6" action="#" method="POST">
+          <div>
+            <label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input id="fullname" name="fullname" type="text" required class="input-field w-full px-4 py-3 border border-gray-300 rounded focus:outline-none" placeholder="Enter your full name">
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input id="email" name="email" type="email" required class="input-field w-full px-4 py-3 border border-gray-300 rounded focus:outline-none" placeholder="your@email.com">
+          </div>
+
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <div class="relative">
+              <input id="password" name="password" type="password" required class="input-field w-full px-4 py-3 border border-gray-300 rounded focus:outline-none" placeholder="Create a password">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 toggle-password">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                  <i class="ri-eye-off-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="w-full bg-gray-200 rounded-full h-1 mb-1">
+                <div class="password-strength bg-red-500 h-1 rounded-full" style="width: 0%"></div>
+              </div>
+              <p class="text-xs text-gray-500 password-strength-text">Password strength: Too weak</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+            <div class="relative">
+              <input id="confirm-password" name="confirm-password" type="password" required class="input-field w-full px-4 py-3 border border-gray-300 rounded focus:outline-none" placeholder="Confirm your password">
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 toggle-password">
+                <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                  <i class="ri-eye-off-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="w-full bg-primary text-white py-3 !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center whitespace-nowrap">
+              <span>Sign Up</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">Or continue with</span>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <button class="social-button w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-google-fill text-red-500"></i>
+              </div>
+              <span>Google</span>
+            </button>
+            <button class="social-button w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+              <div class="w-5 h-5 flex items-center justify-center mr-2">
+                <i class="ri-facebook-fill text-blue-600"></i>
+              </div>
+              <span>Facebook</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white py-6 px-6 shadow rounded-lg">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Benefits of creating an account</h3>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="benefit-item text-center p-3">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div class="w-6 h-6 flex items-center justify-center text-primary">
+                <i class="ri-dashboard-line"></i>
+              </div>
+            </div>
+            <h4 class="text-sm font-medium text-gray-900">Queue Management</h4>
+            <p class="text-xs text-gray-500 mt-1">Monitor and manage your place in line</p>
+          </div>
+          <div class="benefit-item text-center p-3">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div class="w-6 h-6 flex items-center justify-center text-primary">
+                <i class="ri-notification-3-line"></i>
+              </div>
+            </div>
+            <h4 class="text-sm font-medium text-gray-900">Real-time Updates</h4>
+            <p class="text-xs text-gray-500 mt-1">Get instant notifications about queue status</p>
+          </div>
+          <div class="benefit-item text-center p-3">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div class="w-6 h-6 flex items-center justify-center text-primary">
+                <i class="ri-star-line"></i>
+              </div>
+            </div>
+            <h4 class="text-sm font-medium text-gray-900">Priority Access</h4>
+            <p class="text-xs text-gray-500 mt-1">Get exclusive booking options and features</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-sm text-gray-600">
+          Already have an account? 
+          <a href="#" class="font-medium text-primary hover:text-primary/80 transition-colors">Sign In</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-500">&copy; 2025 QueueWise Pro. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-gray-500">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-gray-500">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-gray-500">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Password strength indicator
+  const passwordInput = document.getElementById('password');
+  const strengthBar = document.querySelector('.password-strength');
+  const strengthText = document.querySelector('.password-strength-text');
+  
+  passwordInput.addEventListener('input', function() {
+    const password = this.value;
+    let strength = 0;
+    
+    if (password.length >= 8) strength += 25;
+    if (password.match(/[A-Z]/)) strength += 25;
+    if (password.match(/[0-9]/)) strength += 25;
+    if (password.match(/[^A-Za-z0-9]/)) strength += 25;
+    
+    strengthBar.style.width = strength + '%';
+    
+    if (strength <= 25) {
+      strengthBar.classList.remove('bg-yellow-500', 'bg-green-500');
+      strengthBar.classList.add('bg-red-500');
+      strengthText.textContent = 'Password strength: Too weak';
+    } else if (strength <= 50) {
+      strengthBar.classList.remove('bg-red-500', 'bg-green-500');
+      strengthBar.classList.add('bg-yellow-500');
+      strengthText.textContent = 'Password strength: Could be stronger';
+    } else if (strength <= 75) {
+      strengthBar.classList.remove('bg-red-500', 'bg-green-500');
+      strengthBar.classList.add('bg-yellow-500');
+      strengthText.textContent = 'Password strength: Good';
+    } else {
+      strengthBar.classList.remove('bg-red-500', 'bg-yellow-500');
+      strengthBar.classList.add('bg-green-500');
+      strengthText.textContent = 'Password strength: Strong';
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle password visibility
+  const toggleButtons = document.querySelectorAll('.toggle-password');
+  
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('input');
+      const icon = this.querySelector('i');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('ri-eye-off-line');
+        icon.classList.add('ri-eye-line');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('ri-eye-line');
+        icon.classList.add('ri-eye-off-line');
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-button');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.remove('text-primary');
+        btn.classList.add('text-gray-500');
+      });
+      
+      this.classList.add('active');
+      this.classList.remove('text-gray-500');
+      this.classList.add('text-primary');
+    });
+  });
+});
+</script>
+</body>
+</html>
